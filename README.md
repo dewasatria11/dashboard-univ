@@ -10,6 +10,12 @@ Dashboard interaktif untuk menganalisis performa akademik mahasiswa menggunakan 
 
 ---
 
+## 🌐 Akses Dashboard
+
+🔗 **Live Demo**: [https://dashboard-univ-tugasdewa.streamlit.app/](https://dashboard-univ-tugasdewa.streamlit.app/)
+
+---
+
 ## 📸 Screenshot Dashboard
 
 ![Dashboard Screenshot](screenshot_dashboard.png)

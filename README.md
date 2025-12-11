@@ -25,8 +25,6 @@ Dashboard interaktif untuk menganalisis performa akademik mahasiswa menggunakan 
 - **Pie Chart**: Kategori nilai (A, B, C, D, E)
 - **Interactive Filters**: Filter berdasarkan semester, mata kuliah, dan tahun angkatan
 - **Data Table**: Tabel ringkasan performa 10 mahasiswa terbaik
-- **Animasi Loading**: Elemen muncul satu per satu dengan animasi menarik
-- **Tema Hijau-Putih**: Desain modern dengan warna hijau dan putih
 
 ---
 

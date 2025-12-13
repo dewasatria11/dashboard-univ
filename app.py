@@ -18,12 +18,19 @@ st.set_page_config(
 # ============================================
 st.markdown("""
 <style>
-    /* Hide Streamlit loading indicators (status + spinners) */
+    /* Auto-hide Streamlit loading indicators after ~3s */
+    @keyframes hideAfter3s {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
     div[data-testid="stStatusWidget"],
     div[data-testid="stSpinner"],
     div[data-testid="stPageLoadingIndicator"],
     .stSpinner {
-        display: none !important;
+        animation: hideAfter3s 0s linear 3s forwards !important;
     }
 
     /* ========== ANIMATIONS ========== */

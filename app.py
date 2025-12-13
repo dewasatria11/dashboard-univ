@@ -18,6 +18,11 @@ st.set_page_config(
 # ============================================
 st.markdown("""
 <style>
+    /* Hide Streamlit loading/running status icon */
+    div[data-testid="stStatusWidget"] {
+        display: none;
+    }
+
     /* ========== ANIMATIONS ========== */
     @keyframes fadeInUp {
         0% {

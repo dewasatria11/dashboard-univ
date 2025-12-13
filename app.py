@@ -18,19 +18,59 @@ st.set_page_config(
 # ============================================
 st.markdown("""
 <style>
-    /* Auto-hide Streamlit loading indicators after ~3s */
-    @keyframes hideAfter3s {
+    /* Hide Streamlit top-right status widget */
+    div[data-testid="stStatusWidget"] {
+        display: none !important;
+    }
+
+    /* 3s startup loader overlay */
+    @keyframes startupLoaderHide {
         to {
             opacity: 0;
             visibility: hidden;
         }
     }
 
-    div[data-testid="stStatusWidget"],
-    div[data-testid="stSpinner"],
-    div[data-testid="stPageLoadingIndicator"],
-    .stSpinner {
-        animation: hideAfter3s 0s linear 3s forwards !important;
+    #startup-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.96);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: startupLoaderHide 0.2s ease 3s forwards;
+    }
+
+    #startup-loader .startup-loader__card {
+        background: #ffffff;
+        border: 1px solid rgba(46, 125, 50, 0.2);
+        border-radius: 16px;
+        padding: 18px 22px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #startup-loader .startup-loader__spinner {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 3px solid rgba(46, 125, 50, 0.25);
+        border-top-color: #2e7d32;
+        animation: spin 0.8s linear infinite;
+    }
+
+    #startup-loader .startup-loader__text {
+        color: #1b5e20;
+        font-weight: 600;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     /* ========== ANIMATIONS ========== */
@@ -201,14 +241,9 @@ st.markdown("""
         background: #2e7d32 !important;
     }
     
-    /* Status widget */
+    /* Status widget (hidden) */
     [data-testid="stStatusWidget"] {
-        background: #ffffff !important;
-        color: #333333 !important;
-    }
-    
-    [data-testid="stStatusWidget"] label {
-        color: #333333 !important;
+        display: none !important;
     }
     
     /* Toolbar actions */
@@ -701,6 +736,20 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+if "_startup_loader_shown" not in st.session_state:
+    st.session_state["_startup_loader_shown"] = True
+    st.markdown(
+        """
+        <div id="startup-loader">
+            <div class="startup-loader__card">
+                <div class="startup-loader__spinner"></div>
+                <div class="startup-loader__text">Loading dashboard...</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # ============================================
 # DATA LOADING

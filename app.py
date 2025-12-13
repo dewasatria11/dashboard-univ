@@ -18,9 +18,12 @@ st.set_page_config(
 # ============================================
 st.markdown("""
 <style>
-    /* Hide Streamlit loading/running status icon */
-    div[data-testid="stStatusWidget"] {
-        display: none;
+    /* Hide Streamlit loading indicators (status + spinners) */
+    div[data-testid="stStatusWidget"],
+    div[data-testid="stSpinner"],
+    div[data-testid="stPageLoadingIndicator"],
+    .stSpinner {
+        display: none !important;
     }
 
     /* ========== ANIMATIONS ========== */
